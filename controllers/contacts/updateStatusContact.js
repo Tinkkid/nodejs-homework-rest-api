@@ -3,16 +3,19 @@ const { HttpError } = require("../../helpers/HttpError");
 
 const updateStatusContact = async (req, res) => {
   const { contactId } = req.params;
-  const result = await Contact.findByIdAndUpdate(contactId, req.body, {
-    new: true,
-  });
+  const { favorite } = req.body;
+  const result = await Contact.findByIdAndUpdate(
+    contactId,
+    { favorite },
+    { new: true }
+  );
   if (!result) {
-    throw HttpError(404, "Not found");
+    throw HttpError(404, "Not Found");
   }
   res.json({
     status: "success",
     code: 200,
-    message: "contact updated",
+    message: "status updated",
     data: {
       result,
     },
