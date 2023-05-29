@@ -3,7 +3,7 @@ const Contact = require("../../models/contact");
 const addContact = async (req, res) => {
   const result = await Contact.create(req.body);
   res.status(201).json({
-    status: "succes",
+    status: "success",
     code: 201,
     message: "new contact added",
     data: {
