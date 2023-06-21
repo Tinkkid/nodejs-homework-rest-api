@@ -2,7 +2,7 @@ const express = require("express");
 
 const { auth } = require("../../controllers");
 
-const { register, login, getCurrentUser, logout, updateSubscription, updateAvatar } = auth;
+const { register, login, getCurrentUser, logout, updateSubscription, updateAvatar, verifyEmail } = auth;
 
 const { validateBody, authenticate , upload} = require("../../middlewares");
 
@@ -11,6 +11,8 @@ const { schemas } = require("../../models/user");
 const router = express.Router();
 
 router.post("/register", validateBody(schemas.registerSchema), register);
+
+router.get("/verify/:verificationCode", verifyEmail)
 
 router.post("/login", validateBody(schemas.loginSchema), login);
 
