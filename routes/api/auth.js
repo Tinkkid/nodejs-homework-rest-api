@@ -2,7 +2,7 @@ const express = require("express");
 
 const { auth } = require("../../controllers");
 
-const { register, login, getCurrentUser, logout, updateSubscription, updateAvatar, verifyEmail } = auth;
+const { register, login, getCurrentUser, logout, updateSubscription, updateAvatar, verifyEmail, resendVerifyEmail } = auth;
 
 const { validateBody, authenticate , upload} = require("../../middlewares");
 
@@ -12,7 +12,9 @@ const router = express.Router();
 
 router.post("/register", validateBody(schemas.registerSchema), register);
 
-router.get("/verify/:verificationCode", verifyEmail)
+router.get("/verify/:verificationCode", verifyEmail);
+
+router.post("/verify",validateBody(schemas.emailSchema), resendVerifyEmail )
 
 router.post("/login", validateBody(schemas.loginSchema), login);
 
