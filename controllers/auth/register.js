@@ -39,6 +39,7 @@ const register = async (req, res) => {
         email: newUser.email,
         subscription: newUser.subscription,
         avatarUrl: newUser.avatarUrl,
+        verificationCode: newUser.verificationCode
       },
     },
   });
