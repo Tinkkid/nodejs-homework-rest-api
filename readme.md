@@ -1,4 +1,4 @@
-## GoIT Node.js 
+## GoIT Node.js practice
 
 ### Команди:
 
